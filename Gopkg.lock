@@ -51,7 +51,7 @@
 
 [[projects]]
   name = "github.com/gemnasium/migrate"
-  packages = ["driver","driver/postgres","file","migrate","migrate/direction","pipe"]
+  packages = ["driver","driver/postgres","file","migrate/direction"]
   revision = "603c58f2c1d0882d7d5b24791e6e5af5ab392e44"
   version = "v1.4.1"
 
@@ -60,24 +60,6 @@
   packages = ["."]
   revision = "390ab7935ee28ec6b286364bba9b4dd6410cb3d5"
   version = "v0.3.0"
-
-[[projects]]
-  name = "github.com/go-pg/pg"
-  packages = [".","internal","internal/parser","internal/pool","orm","types"]
-  revision = "a799605e0c66c977511cc1383a1b0003c3da0d68"
-  version = "v6.5.0"
-
-[[projects]]
-  name = "github.com/go-playground/locales"
-  packages = [".","currency"]
-  revision = "b860c92274dfb72f517b8b4c11c6d9f2f8cc9d91"
-  version = "v0.11.1"
-
-[[projects]]
-  name = "github.com/go-playground/universal-translator"
-  packages = ["."]
-  revision = "b32fa301c9fe55953584134cb6853a13c87ec0a1"
-  version = "v0.16.0"
 
 [[projects]]
   name = "github.com/gogo/protobuf"
@@ -134,6 +116,12 @@
   version = "v1.0"
 
 [[projects]]
+  name = "github.com/jinzhu/gorm"
+  packages = [".","dialects/postgres"]
+  revision = "5174cc5c242a728b435ea2be8a2f7f998e15429b"
+  version = "v1.0"
+
+[[projects]]
   branch = "master"
   name = "github.com/jinzhu/inflection"
   packages = ["."]
@@ -154,7 +142,7 @@
 [[projects]]
   branch = "master"
   name = "github.com/lib/pq"
-  packages = [".","oid"]
+  packages = [".","hstore","oid"]
   revision = "e42267488fe361b9dc034be7a6bffef5b195bceb"
 
 [[projects]]
@@ -272,14 +260,8 @@
   version = "v1.0.0"
 
 [[projects]]
-  branch = "master"
-  name = "github.com/stretchr/objx"
-  packages = ["."]
-  revision = "1a9d0bb9f541897e62256577b352fdbc1fb4fd94"
-
-[[projects]]
   name = "github.com/stretchr/testify"
-  packages = ["assert","mock"]
+  packages = ["assert"]
   revision = "69483b4bd14f5845b5a1e55bca19e954e827f1d0"
   version = "v1.1.4"
 
@@ -343,15 +325,9 @@
   revision = "f92cdcd7dcdc69e81b2d7b338479a19a8723cfa3"
   version = "v1.6.0"
 
-[[projects]]
-  name = "gopkg.in/go-playground/validator.v9"
-  packages = ["."]
-  revision = "a021b2ec9a8a8bb970f3f15bc42617cb520e8a64"
-  version = "v9.7.0"
-
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "19feb46631c026d076a2fa477c48ae6a60f2bd8147b480f3efbee708a39212af"
+  inputs-digest = "3221081a4440cb92c5386fb23d8ab9212344bb2f0333f64fc9ecd08f64dd0f08"
   solver-name = "gps-cdcl"
   solver-version = 1
