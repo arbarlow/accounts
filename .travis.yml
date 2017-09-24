@@ -1,0 +1,20 @@
+language: go
+sudo: required
+services:
+  - docker
+before_install:
+  - docker run --name postgres -d -p 9043:5432 postgres:latest
+  - sleep 20
+  - psql -c 'create database account_service_test;' -h localhost -p 9043 -U postgres
+
+script:
+  - go get -t ./...
+  - POSTGRESQL_URL="postgres://postgres@localhost:9043/account_service_test?sslmode=disable" go test ./... -v
+
+after_success:
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+    docker build -t lileio/accounts .;
+    docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+    docker tag lileio/accounts lileio/accounts:${TRAVIS_BUILD_NUMBER};
+    docker push lileio/accounts;
+    fi

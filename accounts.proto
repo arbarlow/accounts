@@ -1,0 +1,79 @@
+syntax = "proto3";
+option go_package = "github.com/lileio/accounts";
+
+package accounts;
+
+message Account {
+  string id = 1;
+  string email = 2;
+  string name = 3;
+  string username = 4;
+  string phone_no = 5;
+  string confirm_token = 6;
+  string password_reset_token = 7;
+}
+
+message ListAccountsRequest {
+  int32 page_size = 1;
+  string page_token = 2;
+}
+
+message ListAccountsResponse {
+  repeated Account accounts = 1;
+  string next_page_token = 2;
+}
+
+message SearchRequest {
+  string query = 1;
+}
+
+message SearchResponse {
+  repeated Account accounts = 1;
+}
+
+message GetRequest {
+  string id = 1;
+  string email = 2;
+}
+
+message AuthenticatePasswordRequest {
+  string id = 1;
+  string email = 2;
+  string password = 3;
+}
+
+message GeneratePasswordResetTokenRequest {
+  string id = 1;
+  string email = 2;
+}
+
+
+message CreateAccountRequest {
+  Account account = 1;
+  string password = 2;
+}
+
+message UpdateAccountRequest {
+  Account account = 1;
+  string password = 2;
+}
+
+message AccountWithErrorsResponse {
+  Account account = 1;
+  map<string, string> errors = 2;
+}
+
+message DeleteAccountRequest {
+  string id = 1;
+}
+
+service Accounts {
+  rpc List (ListAccountsRequest) returns (ListAccountsResponse) {}
+  rpc Get (GetRequest) returns (Account) {}
+  rpc Search (SearchRequest) returns (SearchResponse) {}
+  rpc Create (CreateAccountRequest) returns (AccountWithErrorsResponse) {}
+  rpc Update (UpdateAccountRequest) returns (AccountWithErrorsResponse) {}
+  rpc Delete (DeleteAccountRequest) returns (Account) {}
+  rpc AuthenticatePassword (AuthenticatePasswordRequest) returns (Account) {}
+  rpc GeneratePasswordResetToken (GeneratePasswordResetTokenRequest) returns (Account) {}
+}
