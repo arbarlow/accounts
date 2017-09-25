@@ -3,6 +3,10 @@ sudo: required
 services:
   - docker
 before_install:
+  - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+  - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+  - sudo apt-get update
+  - sudo apt-get -y install docker-ce
   - docker run --name postgres -d -p 9043:5432 postgres:latest
   - sleep 20
   - psql -c 'create database account_service_test;' -h localhost -p 9043 -U postgres
